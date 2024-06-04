@@ -1,9 +1,20 @@
+// Detects the clicks
 var allButtons = document.querySelectorAll(".drum");
 for (var i = 0; i < allButtons.length; i++) {
     allButtons[i].addEventListener("click", function() {
         var buttonInnerHTML = this.innerHTML;
-        
-        switch(buttonInnerHTML) {
+        makeSound(buttonInnerHTML);
+    });
+}
+
+// Detects the keypressed
+document.addEventListener('keypress', function(){
+    makeSound(event.key);    
+});
+
+// Plays sound based on keys or clicks
+function makeSound(key) {
+    switch(key) {
             case 'w':
                 var audio1 = new Audio("./sounds/crash.mp3");
                 audio1.play();
@@ -37,6 +48,5 @@ for (var i = 0; i < allButtons.length; i++) {
                 console.log("Switch case gone wrong");
                 break;
         }
-    });
 }
 
